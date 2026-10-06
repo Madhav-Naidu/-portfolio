@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #07070f;
+    --foreground: #ffffff;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#07070f] text-white antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  * {
+    @apply border-[#7c5cff]/20;
+  }
+
+  ::selection {
+    @apply bg-[#7c5cff]/30 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-[#7c5cff] ring-offset-2 ring-offset-[#07070f];
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-[#0f0f19]/70 backdrop-blur-md border border-[#7c5cff]/20 rounded-2xl;
+  }
+
+  .gradient-border {
+    @apply relative;
+    background: linear-gradient(#0f0f19, #0f0f19) padding-box,
+      linear-gradient(to bottom right, #7c5cff, #00e0c6) border-box;
+    border: 2px solid transparent;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#7c5cff] to-[#00e0c6] bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#7c5cff] to-[#00e0c6] text-white font-semibold
+           hover:shadow-[0_0_30px_rgba(124,92,255,0.4)] transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3.5 rounded-xl border border-[#7c5cff]/30 text-white font-semibold
+           hover:border-[#7c5cff]/60 hover:bg-[#7c5cff]/10 transition-all duration-300;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
